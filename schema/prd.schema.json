@@ -1,0 +1,133 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/agentic-prd/agentic-prd/schema/prd.schema.json",
+  "title": "Agentic PRD Metadata",
+  "description": "Machine-readable metadata contract for Agentic PRD Markdown documents.",
+  "type": "object",
+  "required": [
+    "document_type",
+    "prd_id",
+    "status",
+    "version",
+    "last_updated",
+    "author",
+    "product_name",
+    "target",
+    "priority",
+    "scope",
+    "phases",
+    "current_phase",
+    "progress",
+    "total_features",
+    "implemented_features",
+    "feature_ids",
+    "data_classification"
+  ],
+  "properties": {
+    "document_type": {
+      "const": "prd"
+    },
+    "prd_id": {
+      "type": "string",
+      "pattern": "^PRD-[0-9]{4}$"
+    },
+    "status": {
+      "type": "string",
+      "enum": ["draft", "in-progress", "phase-X-complete", "completed", "deprecated"]
+    },
+    "version": {
+      "type": "string",
+      "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"
+    },
+    "last_updated": {
+      "type": "string",
+      "format": "date"
+    },
+    "author": {
+      "type": "string",
+      "minLength": 1
+    },
+    "product_name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "tagline": {
+      "type": "string"
+    },
+    "target": {
+      "type": "string",
+      "minLength": 1
+    },
+    "priority": {
+      "type": "string",
+      "enum": ["low", "medium", "high", "critical"]
+    },
+    "scope": {
+      "type": "string",
+      "enum": ["system", "module", "feature"]
+    },
+    "phases": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "current_phase": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "progress": {
+      "type": "string",
+      "pattern": "^[0-9]{1,3}%$"
+    },
+    "total_features": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "implemented_features": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "feature_ids": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^FEAT-[0-9]{3}$"
+      },
+      "uniqueItems": true
+    },
+    "blocked_by": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "blocks": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "depends_on": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "data_classification": {
+      "type": "string",
+      "enum": ["public", "internal", "confidential", "restricted"]
+    },
+    "internal_refs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "external_refs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "additionalProperties": true
+}

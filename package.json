@@ -1,0 +1,22 @@
+{
+  "name": "agentic-prd",
+  "version": "0.1.0",
+  "private": false,
+  "type": "module",
+  "description": "Agent-ready PRD format for human-readable and machine-parseable product specifications.",
+  "scripts": {
+    "test": "node --test",
+    "test:unit": "node --test test/validator.unit.test.mjs",
+    "test:integration": "node --test test/project.integration.test.mjs",
+    "test:release": "node --test test/release-check.test.mjs",
+    "validate": "node scripts/validate-prd.mjs"
+  },
+  "keywords": [
+    "prd",
+    "agent",
+    "product-management",
+    "markdown",
+    "schema"
+  ],
+  "license": "MIT"
+}
